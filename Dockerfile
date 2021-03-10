@@ -39,6 +39,9 @@ RUN ulimit -c unlimited
 # Make sure that the temporary directory exists
 RUN mkdir -p $CATALINA_TMPDIR
 
+# Remove all webapps from the default Tomcat installation
+RUN rm -rf $DEPLOYMENT_DIR/*
+
 # Start the Tomcat instance
 ENTRYPOINT ["/opt/tomcat/apache-tomcat-8.5.63/bin/catalina.sh", "run"]
 CMD [""]
